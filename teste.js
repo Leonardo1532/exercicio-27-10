@@ -23,11 +23,14 @@ function CadastrarProduto() {
     console.log(ids, nomes, precos, avaliacoes)
 }
 
+CadastrarProduto()
+
 var opcaoBusca
 function Buscar() {
     opcaoBusca = prompt("Qual opção de busca você prefere?: pelo ID(1) pelo NOME(2)")
 }
 
+Buscar()
 
 /*desafio 2
 Buscar um produto por id, ou seja, passar o id como parâmetro e exibir as
@@ -39,14 +42,17 @@ function BuscarProdutoID(buscaID) {
     for (var index2 = 0; index2 < index; index2++) {
         if (buscaID == ids[index2]) {
 
-            console.log("O ID do produto: ", ids[index2], "O nome: ", nomes[index2], "O preço: ", precos[index2], "A avaliação: ", avaliacoes[index2])
+            console.log("O ID do produto é: " + ids[index2])
+            console.log("O nome é: "+ nomes[index2])
+            console.log("O preço é: ", precos[index2])
+            console.log("A avaliação: ", avaliacoes[index2])
 
         }
     }
 }
 
-
-
+var buscaID = prompt("Insira um ID para busca")
+BuscarProdutoID(buscaID)
 
 
 /*desafio 3
@@ -65,42 +71,17 @@ function BuscarProdutoNome(buscaNome) {
 
         }
     }
-
-}
-if (buscaNome == nomes[index]) {
-    nomes[index] = buscaNome
-    console.log("O Nome do produto: ", buscaNome, "O ID do produto: ", ids)
-
-}
-
-
-
-
-
-
-
-while (qtdProduto == "s") {
-
-    CadastrarProduto()
-
-    var continuarCadastrando = prompt("Deseja cadastrar mais um produto?  s ou n")
-    if (continuarCadastrando == "n") {
-        qtdProduto = "n"
-
-    }
-
-    Buscar()
-
-
-    if (opcaoBusca == "1") {
-        var buscaID = prompt("Insira o ID para a Busca")
-        BuscarProdutoID(buscaID)
-    } else if (opcaoBusca == "2") {
-        var buscaNome = prompt("Insira o nome para a busca")
-        BuscarProdutoNome(buscaNome)
-    }
-
+    if (buscaNome == nomes[index]) {
+        nomes[index] = buscaNome
+        console.log("O Nome do produto: ", buscaNome, "O ID do produto: ", ids)
     
-
+    }
 }
+var buscaNome = prompt("Insira um nome para busca")
+BuscarProdutoNome(buscaNome)
+
+
+//4. Exibir todos os produtos ordenados pelo id;
+
+
 
