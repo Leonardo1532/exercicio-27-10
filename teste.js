@@ -24,6 +24,8 @@ function CadastrarProduto() {
 }
 
 CadastrarProduto()
+CadastrarProduto()
+CadastrarProduto()
 
 var opcaoBusca
 function Buscar() {
@@ -43,7 +45,7 @@ function BuscarProdutoID(buscaID) {
         if (buscaID == ids[index2]) {
 
             console.log("O ID do produto é: " + ids[index2])
-            console.log("O nome é: "+ nomes[index2])
+            console.log("O nome é: " + nomes[index2])
             console.log("O preço é: ", precos[index2])
             console.log("A avaliação: ", avaliacoes[index2])
 
@@ -73,8 +75,9 @@ function BuscarProdutoNome(buscaNome) {
     }
     if (buscaNome == nomes[index]) {
         nomes[index] = buscaNome
-        console.log("O Nome do produto: ", buscaNome, "O ID do produto: ", ids)
-    
+        console.log("O Nome do produto: ", buscaNome)
+        console.log("O ID do produto: ", ids)
+
     }
 }
 var buscaNome = prompt("Insira um nome para busca")
@@ -83,5 +86,25 @@ BuscarProdutoNome(buscaNome)
 
 //4. Exibir todos os produtos ordenados pelo id;
 
+var menorID = 0
+var idSup = []
 
 
+function OrdenarId() {
+    for (var index4 = 0; index4 < ids.length; index4++) {
+        menorID = ids[index4]
+        for (var index5 = 0; index5 < ids.length; index5++) {
+            if (ids[index5] < menorID) {
+                menorID = ids[index5]
+            }
+        }
+        for (var contador = 0; contador < ids.length; contador++) {
+            if (menorID == ids[contador]) {
+                idSup[index4] = ids[contador]
+                ids[contador] = 10000000
+            }
+        }
+    }
+    console.log(idSup)
+}
+OrdenarId()
