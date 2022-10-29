@@ -180,3 +180,12 @@ function AtualizarPreco(idAtualizar) {
 
 }
 AtualizarPreco(idAtualizar)
+
+/* 8. Deletar um produto, não esqueça de organizar as informações para que não fique
+espaços vazios;
+Por fim, utilizando as funções criadas organize a execução do seu código, faça com que o
+usuário possa escolher qual função executar e quando encerrar o programa.
+*/
+
+
+
