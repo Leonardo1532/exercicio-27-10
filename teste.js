@@ -24,8 +24,7 @@ function CadastrarProduto() {
 }
 
 CadastrarProduto()
-CadastrarProduto()
-CadastrarProduto()
+
 
 var opcaoBusca
 function Buscar() {
@@ -106,6 +105,7 @@ function OrdenarId() {
         }
     }
     console.log(idSup)
+    ids = idSup
 }
 OrdenarId()
 
@@ -130,6 +130,7 @@ function OrdenarPreco() {
         }
     }
     console.log(precoSup)
+    precos = precoSup
 }
 OrdenarPreco()
 
@@ -154,5 +155,28 @@ function OrdenarAvaliacao() {
         }
     }
     console.log(avaliacaoSup)
+    avaliacoes = avaliacaoSup
 }
 OrdenarAvaliacao()
+
+
+
+
+//7. Atualizar o preço de um produto, para isso deve receber o id do produto como parâmetro e o novo valor para atualizar;
+
+var precoAtualizado
+var idAtualizar = prompt("Insira o ID do produto que queira atualizar")
+
+
+function AtualizarPreco(idAtualizar) {
+
+    precoAtualizado = parseInt(prompt("Insira um novo valor para o produto"))
+    for(var index = 0; index < ids.length; index++){
+        if(idAtualizar == ids[index]){
+            precos[index] = precoAtualizado 
+            console.log("o novo valor deste produto é: " + precoAtualizado )
+        }
+    }
+
+}
+AtualizarPreco(idAtualizar)
