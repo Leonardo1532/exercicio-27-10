@@ -14,10 +14,10 @@ var avaliacoes = []
 var index = 0
 
 function CadastrarProduto() {
-    ids[index] = prompt("Insira o ID do seu produto")
+    ids[index] = parseInt(prompt("Insira o ID do seu produto"))
     nomes[index] = prompt("Insira o nome do seu produto")
-    precos[index] = prompt("Insira o PREÇO do seu produto")
-    avaliacoes[index] = prompt("Insira a avaliação do seu produto")
+    precos[index] = parseInt(prompt("Insira o PREÇO do seu produto"))
+    avaliacoes[index] = parseInt(prompt("Insira a avaliação do seu produto"))
     index++
     console.log("Produto cadastrado com sucesso")
     console.log(ids, nomes, precos, avaliacoes)
@@ -108,3 +108,51 @@ function OrdenarId() {
     console.log(idSup)
 }
 OrdenarId()
+
+//Exibir os produtos ordenador pelo preço;
+
+var menorPreco = 0
+var precoSup = []
+
+function OrdenarPreco() {
+    for (var contador = 0; contador < precos.length; contador++) {
+        menorPreco = precos[contador]
+        for (var contador2 = 0; contador2 < precos.length; contador2++) {
+            if (precos[contador2] < menorPreco) {
+                menorPreco = precos[contador2]
+            }
+        }
+        for (var contador3 = 0; contador3 < precos.length; contador3++) {
+            if (menorPreco == precos[contador3]) {
+                precoSup[contador] = precos[contador3]
+                precos[contador3] = 10000000
+            }
+        }
+    }
+    console.log(precoSup)
+}
+OrdenarPreco()
+
+//6. Exibir os produtos pela ordem de avaliação;
+
+var menorAvaliacao = 0
+var avaliacaoSup = []
+
+function OrdenarAvaliacao() {
+    for (var contador = 0; contador < avaliacoes.length; contador++) {
+        menorAvaliacao = avaliacoes[contador]
+        for (var contador2 = 0; contador2 < avaliacoes.length; contador2++) {
+            if (avaliacoes[contador2] < menorAvaliacao) {
+                menorAvaliacao = avaliacoes[contador2]
+            }
+        }
+        for (var contador3 = 0; contador3 < avaliacoes.length; contador3++) {
+            if (menorAvaliacao == avaliacoes[contador3]) {
+                avaliacaoSup[contador] = avaliacoes[contador3]
+                avaliacoes[contador3] = 10000000
+            }
+        }
+    }
+    console.log(avaliacaoSup)
+}
+OrdenarAvaliacao()
