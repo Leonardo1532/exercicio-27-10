@@ -5,13 +5,21 @@
 
 // deafio 1
 
-var qtdProduto = "s"
-
 var ids = []
 var nomes = []
 var precos = []
 var avaliacoes = []
 var index = 0
+
+var suporteNome = []
+var suporteID = []
+var suportePreco = []
+var suporteAvalicoes = []
+var indexSup = 0
+
+
+
+
 
 function CadastrarProduto() {
     ids[index] = parseInt(prompt("Insira o ID do seu produto"))
@@ -19,19 +27,10 @@ function CadastrarProduto() {
     precos[index] = parseInt(prompt("Insira o PREÇO do seu produto"))
     avaliacoes[index] = parseInt(prompt("Insira a avaliação do seu produto"))
     index++
-    console.log("Produto cadastrado com sucesso")
-    console.log(ids, nomes, precos, avaliacoes)
 }
 
-CadastrarProduto()
 
 
-var opcaoBusca
-function Buscar() {
-    opcaoBusca = prompt("Qual opção de busca você prefere?: pelo ID(1) pelo NOME(2)")
-}
-
-Buscar()
 
 /*desafio 2
 Buscar um produto por id, ou seja, passar o id como parâmetro e exibir as
@@ -40,7 +39,7 @@ informações do produto correspondente;
 
 function BuscarProdutoID(buscaID) {
 
-    for (var index2 = 0; index2 < index; index2++) {
+    for (var index2 = 0; index2 < ids.length; index2++) {
         if (buscaID == ids[index2]) {
 
             console.log("O ID do produto é: " + ids[index2])
@@ -52,10 +51,6 @@ function BuscarProdutoID(buscaID) {
     }
 }
 
-var buscaID = prompt("Insira um ID para busca")
-BuscarProdutoID(buscaID)
-
-
 /*desafio 3
 Buscar um produto pelo nome e retornar o id dele;
 E.: Entrada = Mouse Médio
@@ -64,7 +59,7 @@ Retorno = 2
 
 function BuscarProdutoNome(buscaNome) {
 
-    for (var index3 = 0; index3 < index; index3++) {
+    for (var index3 = 0; index3 < nomes.length; index3++) {
 
         if (buscaNome == nomes[index3]) {
 
@@ -79,19 +74,21 @@ function BuscarProdutoNome(buscaNome) {
 
     }
 }
-var buscaNome = prompt("Insira um nome para busca")
-BuscarProdutoNome(buscaNome)
-
 
 //4. Exibir todos os produtos ordenados pelo id;
 
 var menorID = 0
-var idSup = []
 
 
 function OrdenarId() {
+
+    suporteNome = []
+    suporteID = []
+    suportePreco = []
+    suporteAvalicoes = []
+
     for (var index4 = 0; index4 < ids.length; index4++) {
-        menorID = ids[index4]
+        menorID = 1000000
         for (var index5 = 0; index5 < ids.length; index5++) {
             if (ids[index5] < menorID) {
                 menorID = ids[index5]
@@ -99,24 +96,40 @@ function OrdenarId() {
         }
         for (var contador = 0; contador < ids.length; contador++) {
             if (menorID == ids[contador]) {
-                idSup[index4] = ids[contador]
+
+                suporteID[index4] = ids[contador]
+                suporteNome[index4] = nomes[contador]
+                suportePreco[index4] = precos[contador]
+                suporteAvalicoes[index4] = avaliacoes[contador]
                 ids[contador] = 10000000
             }
         }
     }
-    console.log(idSup)
-    ids = idSup
+    ids = suporteID
+    nomes = suporteNome
+    precos = suportePreco
+    avaliacoes = suporteAvalicoes
+
+    for (var contador = 0; contador < ids.length; contador++) {
+        console.log(ids[contador], nomes[contador], precos[contador], avaliacoes[contador])
+    }
 }
-OrdenarId()
+
 
 //Exibir os produtos ordenador pelo preço;
 
 var menorPreco = 0
-var precoSup = []
+
 
 function OrdenarPreco() {
+
+    suporteNome = []
+    suporteID = []
+    suportePreco = []
+    suporteAvalicoes = []
+
     for (var contador = 0; contador < precos.length; contador++) {
-        menorPreco = precos[contador]
+        menorPreco = 100000
         for (var contador2 = 0; contador2 < precos.length; contador2++) {
             if (precos[contador2] < menorPreco) {
                 menorPreco = precos[contador2]
@@ -124,62 +137,84 @@ function OrdenarPreco() {
         }
         for (var contador3 = 0; contador3 < precos.length; contador3++) {
             if (menorPreco == precos[contador3]) {
-                precoSup[contador] = precos[contador3]
+
+                suportePreco[contador] = precos[contador3]
+                suporteID[contador] = ids[contador3]
+                suporteNome[contador] = nomes[contador3]
+                suporteAvalicoes[contador] = avaliacoes[contador3]
                 precos[contador3] = 10000000
             }
         }
     }
-    console.log(precoSup)
-    precos = precoSup
+
+    console.log(suporteNome, suporteID, suporteAvalicoes, suportePreco)
+    precos = suportePreco
+    ids = suporteID
+    nomes = suporteNome
+    avaliacoes = suporteAvalicoes
+
+    for (var contador = 0; contador < ids.length; contador++) {
+        console.log(ids[contador], nomes[contador], precos[contador], avaliacoes[contador])
+    }
 }
-OrdenarPreco()
 
 //6. Exibir os produtos pela ordem de avaliação;
 
 var menorAvaliacao = 0
-var avaliacaoSup = []
 
 function OrdenarAvaliacao() {
+
+    suporteNome = []
+    suporteID = []
+    suportePreco = []
+    suporteAvalicoes = []
+
     for (var contador = 0; contador < avaliacoes.length; contador++) {
-        menorAvaliacao = avaliacoes[contador]
+        menorAvaliacao = 100000
+
         for (var contador2 = 0; contador2 < avaliacoes.length; contador2++) {
             if (avaliacoes[contador2] < menorAvaliacao) {
                 menorAvaliacao = avaliacoes[contador2]
             }
         }
+        var contador4 = 0
+
         for (var contador3 = 0; contador3 < avaliacoes.length; contador3++) {
-            if (menorAvaliacao == avaliacoes[contador3]) {
-                avaliacaoSup[contador] = avaliacoes[contador3]
+            if (menorAvaliacao == avaliacoes[contador3] && contador4 == 0) {
+
+                suporteAvalicoes[contador] = avaliacoes[contador3]
+                suporteID[contador] = ids[contador3]
+                suporteNome[contador] = nomes[contador3]
+                suportePreco[contador] = precos[contador3]
                 avaliacoes[contador3] = 10000000
+                contador4++
             }
         }
     }
-    console.log(avaliacaoSup)
-    avaliacoes = avaliacaoSup
+    avaliacoes = suporteAvalicoes
+    precos = suportePreco
+    ids = suporteID
+    nomes = suporteNome
+
+    for (var contador = 0; contador < ids.length; contador++) {
+        console.log(ids[contador], nomes[contador], precos[contador], avaliacoes[contador])
+    }
 }
-OrdenarAvaliacao()
-
-
-
 
 //7. Atualizar o preço de um produto, para isso deve receber o id do produto como parâmetro e o novo valor para atualizar;
 
 var precoAtualizado
-var idAtualizar = prompt("Insira o ID do produto que queira atualizar")
-
 
 function AtualizarPreco(idAtualizar) {
 
     precoAtualizado = parseInt(prompt("Insira um novo valor para o produto"))
-    for(var index = 0; index < ids.length; index++){
-        if(idAtualizar == ids[index]){
-            precos[index] = precoAtualizado 
-            console.log("o novo valor deste produto é: " + precoAtualizado )
+    for (var index = 0; index < ids.length; index++) {
+        if (idAtualizar == ids[index]) {
+            precos[index] = precoAtualizado
         }
     }
 
 }
-AtualizarPreco(idAtualizar)
 
 /* 8. Deletar um produto, não esqueça de organizar as informações para que não fique
 espaços vazios;
@@ -188,4 +223,91 @@ usuário possa escolher qual função executar e quando encerrar o programa.
 */
 
 
+var nome
 
+function DeletarProduto(nome) {
+
+    suporteNome = []
+    suporteID = []
+    suportePreco = []
+    suporteAvalicoes = []
+
+    for (var contador5 = 0; contador5 < nomes.length; contador5++) {
+
+        if (nome == nomes[contador5]) {
+            nomes[contador5] = 0
+
+        }
+    }
+
+    for (var contador6 = 0; contador6 < nomes.length; contador6++) {
+
+        if (nomes[contador6] != 0) {
+
+            suporteNome[indexSup] = nomes[contador6]
+
+            suporteID[indexSup] = ids[contador6]
+
+            suportePreco[indexSup] = precos[contador6]
+
+            suporteAvalicoes[indexSup] = avaliacoes[contador6]
+
+            indexSup++
+        }
+    }
+
+    nomes = suporteNome
+    ids = suporteID
+    precos = suportePreco
+    avaliacoes = suporteAvalicoes
+
+}
+
+
+
+var continuar = "s"
+
+while (continuar == "s") {
+
+
+    var opcao = prompt("Insira a opção que deseja executar: Cadastro(1) / Buscar por ID(2) / Buscar por nome(3) / Ordenar por ID(4) / Ordenar por PREÇO(5) / Ordenar por Avaliação(6) / Atualizar Produto(7) / Deletar um produto(8)")
+
+
+    if (opcao == "1") {
+        CadastrarProduto()
+        console.log(ids, nomes, precos, avaliacoes)
+        console.log("Produto cadastrado com sucesso")
+
+    } else if (opcao == "2") {
+        buscaID = prompt("Insira um ID para pesquisa")
+        BuscarProdutoID(buscaID)
+
+    } else if (opcao == "3") {
+        buscaNome = prompt("Insira um nome para pesquisa")
+        BuscarProdutoNome(buscaNome)
+
+    } else if (opcao == "4") {
+        OrdenarId()
+
+    } else if (opcao == "5") {
+        OrdenarPreco()
+
+    } else if (opcao == "6") {
+        OrdenarAvaliacao()
+
+    } else if (opcao == "7") {
+        var idAtualizar = prompt("Insira o ID do produto que queira atualizar")
+        AtualizarPreco(idAtualizar)
+        console.log("o novo valor deste produto é: " + precoAtualizado)
+
+    } else if (opcao == "8") {
+        nome = prompt("Insira o nome do produto que queira DELETAR")
+        DeletarProduto(nome)
+        console.log("Produto DELETADO com sucesso")
+    }
+
+    var desejaContinuar = prompt("Deseja continuar fazendo execuções?  s ou n")
+    if (desejaContinuar != "s") {
+        continuar = "n"
+    }
+}
